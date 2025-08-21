@@ -213,6 +213,7 @@ ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_SIGNUP_FIELDS = ['email*', 'username*', 'password1*', 'password2*']
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'  # Require verified email before login
 ACCOUNT_CONFIRM_EMAIL_ON_GET = True       # Confirm immediately when link is opened
+ACCOUNT_LOGIN_ON_SIGNUP = False           # Do not log in immediately after signup
 LOGIN_REDIRECT_URL = '/'                  # or your dashboard/homepage
 ACCOUNT_LOGOUT_REDIRECT_URL = '/'         # optional
 
@@ -223,8 +224,11 @@ if ENVIRONMENT == 'development':
     # Allow login without mandatory email verification during development
     ACCOUNT_EMAIL_VERIFICATION = 'optional'
 elif ENVIRONMENT == 'production':
-    # In production, expect all email settings to be supplied via environment
-    pass
+    # In production, enforce email verification and secure links
+    ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+    ACCOUNT_LOGIN_ON_SIGNUP = False
+    ACCOUNT_EMAIL_REQUIRED = True
+    ACCOUNT_DEFAULT_HTTP_PROTOCOL = 'https'
 
 # Hosts and CSRF
 ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=['futureroots.onrender.com'])
