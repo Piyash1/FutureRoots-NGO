@@ -1,0 +1,84 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Education for Child</title>
+  <link rel="stylesheet" href="{% static 'css/education.css' %}">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel="icon" href="{% static 'images/favicon.png' %}" type="image/png">
+</head>
+<body>
+    {% include 'partials/header.html' %}
+    <section class="page-header" style="background: url('/static/images/header-bg.jpg') center center / cover no-repeat;">
+        <h1>Child Education NGO in Santhia, Pabna</h1>
+        <nav class="breadcrumb">
+        <a href="{% url 'home' %}">Home</a> &gt;
+        <a href="{% url 'home' %}#programsSection">Programs</a> &gt;
+        <span>Education for Child</span>
+        </nav>
+    </section>
+
+  <main class="content">
+    <section class="left-column">
+      <h2>Best Child Education NGO in Bandiramchar, Santhia, Pabna</h2>
+      <p>
+        Education is a fundamental right of every person. Bandiramchar Development Foundation is a dedicated NGO committed to transforming the lives of underprivileged children through education. Operating in marginalized and rural communities, the foundation identifies children who lack access to basic education and provides them with learning opportunities that are both inclusive and impactful. Through its grassroots approach, the foundation runs community-based learning centers, distributes essential school supplies, and supports families in keeping their children in school. Special attention is given to girls and children from vulnerable backgrounds to ensure no child is left behind. The organization also collaborates with local schools and educators to enhance teaching quality and promote child-friendly learning environments. Regular workshops, awareness campaigns, and parent engagement sessions are conducted to emphasize the long-term value of education. Bandiramchar Development Foundation believes that education is the key to breaking the cycle of poverty, and it is working tirelessly to empower the next generation with knowledge, skills, and confidence. Every initiative is guided by the belief that every child deserves a chance to learn, grow, and dream of a brighter future.
+      </p>
+      <img src="{% static 'images/education-photo.jpg' %}" alt="Child Education" class="education-image">
+
+      <p>
+        Bandiramchar Development Foundation runs an educational initiative aimed at reaching even the most remote areas of Bangladesh to ensure every child has access to learning. Through this program, the Foundation contributes to a fund that supports annual scholarships for underprivileged students and provides Education Kits to children and youth in need. These kits, which include essential learning materials, are distributed based on the availability of funds collected from various supporters, including the Trust itself. Additionally, the initiative empowers students by offering free textbooks and notebooks, and by funding academic coaching for around 500 children across centers in seven cities. Every donation, regardless of its size, plays a vital role in transforming lives by supporting the education of underprivileged children and young people across Bangladesh.
+      </p>
+      
+      <div class="mission-objective">
+            <a href="{% url 'our-mission' %}" class="box-link">
+                <div class="box">
+                    <strong>📘 Our Mission</strong><br>
+                    The mission of Youth Helping Trust is overcoming poverty, and ensuring a life...
+                </div>
+            </a>
+
+            <a href="{% url 'our-objective' %}" class="box-link">
+                <div class="box">
+                    <strong>🎯 Our Objective</strong><br>
+                    Youth Helping Trust empowering and health community-based organization...
+                </div>
+            </a>
+      </div>
+    </section>
+
+    <aside class="right-sidebar">
+      <div class="program-list">
+        <ul>
+            <li><a href="{% url 'education' %}" class="highlighted-program">Child Education NGO in Santhia</a></li>
+            <li><a href="{% url 'health' %}">Health Care Program</a></li>
+            <li><a href="{% url 'women-empowerment' %}">Women Empowerment Program</a></li>
+            <li><a href="{% url 'vocational-training' %}">Vocational Training Program</a></li>
+            <li><a href="{% url 'loan-program' %}">Interest free Loan Program</a></li>
+        </ul>
+      </div>
+
+        <div class="contact-box">
+            <img src="{% static 'images/telephone.png' %}" alt="Call Icon" class="call-icon">
+            <p>Have any questions? Call us!</p>
+            <h4>+880 1798772429</h4>
+            <p class="info">info@bdf.org</p>
+        </div>
+
+      <div class="donate-box">
+        <h4>Contribute To Children’s Education</h4>
+        <p>Donating to Us Will Transform a Child's Life</p>
+        <a href="{% url 'donate' %}" class="donate-btn">
+            Donate Now
+            <img src="{% static 'images/heart.png' %}" alt="Donate Icon" class="donate-icon">
+        </a>
+      </div>
+    </aside>
+  </main>
+{% include 'partials/footer.html' %}
+
+<script src="{% static 'js/smooth-scroll.js' %}"></script>
+
+</body>
+</html>

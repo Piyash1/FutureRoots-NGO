@@ -1,0 +1,181 @@
+<!--{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Volunteer Registration</title>
+    <link rel="stylesheet" href="{% static 'css/form.css' %}">
+</head>
+<body>
+    <div class="form-container">
+        <form method="POST">
+            {% csrf_token %}
+            <h2>Become a Volunteer</h2>
+            {{ form.as_p }}
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>-->
+
+<!--<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Volunteer Registration</title>
+    <style>
+        body { font-family: sans-serif; padding: 50px; background: linear-gradient(120deg, #4977ce, #ff977c); }
+        form {
+            max-width: 600px; margin: auto; background: white;
+            padding: 30px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        input, textarea, select {
+            width: 100%; padding: 10px; margin-top: 10px;
+            border: 1px solid #ccc; border-radius: 6px;
+        }
+        button {
+            margin-top: 20px; background-color: #e43a47;
+            color: white; padding: 10px 16px; border: none;
+            border-radius: 8px; cursor: pointer;
+            transition: background 0.3s ease;
+            font-weight: bold;
+        }
+        button:hover { background-color: #c62828; }
+    </style>
+</head>
+<body>
+    <form method="POST">
+        <h2>Become a Volunteer</h2>
+        <label>Full Name</label>
+        <input type="text" name="full_name" required>
+
+        <label>Email</label>
+        <input type="email" name="email" required>
+
+        <label>Phone</label>
+        <input type="text" name="phone" required>
+
+        <label>Address</label>
+        <textarea name="address" rows="2" required></textarea>
+
+        <label>Skills / Interests</label>
+        <textarea name="skills" rows="2"></textarea>
+
+        <label>Availability</label>
+        <select name="availability" required>
+            <option value="">-- Select --</option>
+            <option value="Weekdays">Weekdays</option>
+            <option value="Weekends">Weekends</option>
+            <option value="Evenings">Evenings</option>
+            <option value="Full Time">Full Time</option>
+        </select>
+
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>-->
+
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Volunteer Registration</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            padding: 50px;
+            background: linear-gradient(120deg, #4977ce, #ff977c);
+        }
+        form {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        input, textarea, select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+        button {
+            margin-top: 20px;
+            background-color: #e43a47;
+            color: white;
+            padding: 10px 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            font-weight: bold;
+        }
+        button:hover {
+            background-color: #c62828;
+        }
+        .back-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 16px;
+            background-color: #555;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: background 0.3s ease;
+            transform: translateX(360px);
+        }
+
+        .back-btn:hover {
+            background-color: #333;
+        }
+    </style>
+</head>
+<body>
+    <form method="POST">
+        {% csrf_token %}
+        <h2>Become a Volunteer</h2>
+
+        <label>Full Name</label>
+        <input type="text" name="full_name" required>
+
+        <label>Email</label>
+        <input type="email" name="email" required>
+
+        <label>Phone</label>
+        <input type="text" name="phone" required>
+
+        <label>Address</label>
+        <textarea name="address" rows="2" required></textarea>
+
+        <label>Skills / Interests</label>
+        <textarea name="skills" rows="2"></textarea>
+
+        <label>Availability</label>
+        <select name="availability" required>
+            <option value="">-- Select --</option>
+            <option value="Weekdays">Weekdays</option>
+            <option value="Weekends">Weekends</option>
+            <option value="Evenings">Evenings</option>
+            <option value="Full Time">Full Time</option>
+        </select>
+
+        <button type="submit">Submit</button>
+
+        <a href="{% url 'home' %}" class="back-btn">← Back to Home</a>
+
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert" style="color: green; font-weight: bold; transform: translateY(11px);">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    </form>
+
+</body>
+</html>
+

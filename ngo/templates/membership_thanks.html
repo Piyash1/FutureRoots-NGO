@@ -1,0 +1,15 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Thank You</title>
+  <link rel="stylesheet" href="{% static 'css/membership.css' %}">
+</head>
+<body>
+  <div class="form-container">
+    <h1>🎉 Thank You!</h1>
+    <p>Thank you for becoming a member of our NGO. We're excited to have you join our mission.</p>
+    <a href="{% url 'home' %}"><button>Back to Home</button></a>
+  </div>
+</body>
+</html>

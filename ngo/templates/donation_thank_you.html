@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="thank-you-section">
+  <div class="form-container" style="max-width: 600px; margin: 50px auto; padding: 30px; background: white; border-radius: 12px; box-shadow: 0 0 15px rgba(0,0,0,0.1); text-align: center;">
+    <h1 style="color: #28a745;">🎉 Thank You!</h1>
+    <p style="margin: 20px 0; font-size: 16px;">We sincerely appreciate your generous donation.<br>Your support helps us make a lasting impact in children's lives.</p>
+    <a href="{% url 'home' %}">
+      <button style="background: #ffc107; border: none; padding: 12px 20px; font-weight: bold; border-radius: 6px; cursor: pointer;">← Back to Home</button>
+    </a>
+  </div>
+</section>
+{% endblock content %}

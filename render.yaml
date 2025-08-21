@@ -1,0 +1,40 @@
+services:
+  - type: web
+    name: ngo-web
+    env: python
+    plan: free
+    region: oregon
+    buildCommand: "pip install -r requirements.txt && python ngo/manage.py collectstatic --noinput && python ngo/manage.py migrate --noinput"
+    startCommand: "gunicorn ngo.wsgi:application --log-file -"
+    envVars:
+      - key: ENVIRONMENT
+        value: production
+      - key: DJANGO_SETTINGS_MODULE
+        value: ngo.settings
+      - key: PYTHON_VERSION
+        value: 3.12.3
+      # Set the following in Render Dashboard as secrets
+      - key: DJANGO_SECRET_KEY
+        sync: false
+      - key: DATABASE_URL
+        sync: false
+      - key: CLOUDINARY_URL
+        sync: false
+      - key: EMAIL_BACKEND
+        value: django.core.mail.backends.smtp.EmailBackend
+      - key: EMAIL_HOST
+        value: smtp.gmail.com
+      - key: EMAIL_PORT
+        value: "587"
+      - key: EMAIL_USE_TLS
+        value: "True"
+      - key: EMAIL_HOST_USER
+        sync: false
+      - key: EMAIL_HOST_PASSWORD
+        sync: false
+      - key: DEFAULT_FROM_EMAIL
+        sync: false
+      - key: ALLOWED_HOSTS
+        value: "ngo-web.onrender.com"
+      - key: CSRF_TRUSTED_ORIGINS
+        value: "https://ngo-web.onrender.com"

@@ -1,0 +1,92 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Our Objective</title>
+  <link rel="stylesheet" href="{% static 'css/mission.css' %}">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel="icon" href="{% static 'images/favicon.png' %}" type="image/png">
+</head>
+<body>
+    {% include 'partials/header.html' %}
+    <section class="page-header" style="background: url('/static/images/header-bg.jpg') center center / cover no-repeat;">
+        <h1>Our Objective</h1>
+        <nav class="breadcrumb">
+        <a href="{% url 'home' %}">Home</a> &gt;
+        <a href="{% url 'home' %}#programsSection">Programs</a> &gt;
+        <span>Our Objective</span>
+        </nav>
+    </section>
+
+  <main class="content">
+    <section class="left-column">
+      <h2>Our Objective - Bandiramchar Development Foundation</h2>
+      <p>
+        <span style="color: #000; font-weight: bold; font-size: 18px;">Bandiramchar Development Foundation</span> is a community-based organization in Santhia, Pabna dedicated to creating positive change in the lives of underprivileged children, their families, and communities. The organization focuses on promoting welfare activities, supporting people with disabilities, and assisting the rural poor. It also utilizes impact monitoring to enhance project management and effectiveness.
+      </p>
+      
+      <ul class="point-list">
+        <li>Enroll and retain children in school through free education support.</li>
+        <li>Organize regular health camps and provide free medical services.</li>
+        <li>Conduct awareness programs on women’s rights and gender equality.</li>
+        <li>Offer training in tailoring, crafts, agriculture, and technical skills.</li>
+        <li>Disburse interest-free loans to support micro-enterprises and startups.</li>
+        <li>Distribute educational kits and materials to underprivileged children.</li>
+        <li>Promote preventive health practices through local outreach.</li>
+        <li>Train women in income-generating skills to ensure financial independence.</li>
+        <li>Provide emergency healthcare assistance in rural areas.</li>
+        <li>Facilitate scholarships and sponsorships for higher education.</li>
+        <li>Build networks of self-help groups for women and youth.</li>
+        <li>Reduce rural-to-urban migration by creating local employment opportunities.</li>
+        <li>Monitor and evaluate program impact to ensure sustainable development.</li>
+       </ul>
+
+
+      <div class="mission-objective">
+            <a href="{% url 'our-mission' %}" class="box-link">
+                <div class="box">
+                    <strong>📘 Our Mission</strong><br>
+                    The mission of Youth Helping Trust is overcoming poverty, and ensuring a life...
+                </div>
+            </a>
+
+            <a href="{% url 'our-objective' %}" class="box-link">
+                <div class="box">
+                    <strong>🎯 Our Objective</strong><br>
+                    Youth Helping Trust empowering and health community-based organization...
+                </div>
+            </a>
+      </div>
+    </section>
+
+    <aside class="right-sidebar">
+      <div class="program-list">
+        <ul>
+            <li><a href="{% url 'education' %}">Child Education NGO in Santhia</a></li>
+            <li><a href="{% url 'health' %}">Health Care Program</a></li>
+            <li><a href="{% url 'women-empowerment' %}">Women Empowerment Program</a></li>
+            <li><a href="{% url 'vocational-training' %}">Vocational Training Program</a></li>
+            <li><a href="{% url 'loan-program' %}">Interest free Loan Program</a></li>
+        </ul>
+      </div>
+
+        <div class="contact-box">
+            <img src="{% static 'images/telephone.png' %}" alt="Call Icon" class="call-icon">
+            <p>Have any questions? Call us!</p>
+            <h4>+880 1798772429</h4>
+            <p class="info">info@bdf.org</p>
+        </div>
+
+      <div class="donate-box">
+        <a href="#" class="donate-btn">
+            Donate Now
+            <img src="{% static 'images/heart.png' %}" alt="Donate Icon" class="donate-icon">
+        </a>
+      </div>
+    </aside>
+  </main>
+{% include 'partials/footer.html' %}
+<script src="{% static 'js/smooth-scroll.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,227 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Bandiramchar Development Foundation</title>
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <link rel="stylesheet" href="{% static 'css/scroll-animations.css' %}">
+        <link rel="icon" href="{% static 'images/favicon.png' %}" type="image/png">
+    </head>
+    <body>
+        <div class="fullContainer banner" id="homeSection">
+            {% include 'partials/header.html' %}
+            <!--header ends here-->
+            
+            <div class="container">
+                <div class="hero-titles">
+                    <h1>Together We Can <span>Enhance The Lives</span></h1>
+                    <h2>Of Underprivileged <span>Children</span></br>Through Education</h2>
+                </div>
+                <p>
+                </p>
+                <div class="hero-button">
+                    <a href="{% url 'donate' %}">
+                        <button>Start With A Little</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!--homeSection ends here-->
+
+        <div class="auth-nav scroll-animate slide-in-down">
+            {% if user.is_authenticated %}
+                <span>Welcome, {{ user.username }}</span>
+                <a href="{% url 'account_logout' %}">Logout</a>
+            {% else %}
+                <a href="{% url 'account_login' %}" class="login-btn">Login</a>
+                <a href="{% url 'account_signup' %}" class="signup-btn">Sign Up</a>
+            {% endif %}
+        </div>
+
+        <section class="fullcont" id="aboutSection">
+            <div class="container">
+                <h2 class="sectionTitle scroll-animate fade-in-up">About Us</h2>
+                <p class="scroll-animate fade-in-up">
+                    Bandiramchar Development Foundation is a nonprofit organization dedicated to improving lives in rural Bangladesh through education, health, and community development programs. We work closely with underprivileged communities to provide access to quality education, essential healthcare, and social support, empowering individuals and families to build a better and healthier future.
+                </p>
+                <div class="director-message scroll-animate fade-in-left">
+                    <img src="{% static 'images/director.jpg' %}" alt="Director" class="director-photo" />
+                    <div class="message">
+                        <h3>Message from Our Director</h3>
+                        <p>"Together, we can create a future where every child has access to education, health, and dignity."</p>
+                        <p><strong>— Moniruzzaman, Director</strong></p>
+                    </div>
+                </div>
+                <div class="cards stagger-container">
+                    <div class="donationBox stagger-item">
+                        <div class="title">Give Donation</div>
+                        <p>
+                            Donate today to empower lives and build futures. 
+                        </p>
+                        <a href="{% url 'donate' %}">
+                            <button>Donate Now</button>
+                        </a>
+                    </div>
+                    <!--Donation Box end-->
+
+                    <div class="volunteerBox stagger-item">
+                        <div class="title">Become a Volunteer</div>
+                        <p>
+                            Join us as a volunteer and help make a difference today! 
+                        </p>
+                        <a href="{% url 'volunteer' %}">
+                            <button> Become Now </button>
+                        </a>
+                    </div>
+                    <!--Volunteer Box end-->
+
+                    <div class="mission-objective stagger-item">
+                        <a href="{% url 'our-mission' %}" class="box-linkk">
+                           <button class="mission-btn">📘 Our Mission</button>
+                        </a><br>
+
+                        <a href="{% url 'our-objective' %}" class="box-linkk">
+                            <button class="mission-btn">🎯 Our Objective</button>
+                        </a>
+                    </div>
+                    <!--Scholarship Box end-->
+                </div>
+            </div>
+        </section>
+        <!--aboutSection ends here-->
+
+        <section class="programs" id="programsSection">
+            <div class="container">
+                <h2 class="sectionTitle scroll-animate fade-in-up">Programs</h2>
+                
+                <div class="boxContainer stagger-container">
+                    <div class="box stagger-item">
+                        <div class="cardImage"></div>
+                        <div class="programTitle">
+                            Education for child
+                        </div>
+                        <div class="donationCount">
+                            Donation Goal : <span>500</span>
+                        </div>
+                        <a href="{% url 'education' %}" class="learn-more-btn">
+                            Learn More <span class="arrow">➔</span>
+                        </a>
+                    </div>
+                    <!--box end-->
+                      
+                    <div class="box stagger-item">
+                        <div class="cardImage"></div>
+                        <div class="programTitle">
+                            Health Care
+                        </div>
+                        <div class="donationCount">
+                            Donation Goal : <span>500</span>
+                        </div>
+                        <a href="{% url 'health' %}" class="learn-more-btn">
+                            Learn More <span class="arrow">➔</span>
+                        </a>
+                    </div>
+                    <!--box end-->
+                     
+                    <div class="box stagger-item">
+                        <div class="cardImage"></div>
+                        <div class="programTitle">
+                            Women Empowerment
+                        </div>
+                        <div class="donationCount">
+                            Donation Goal : <span>500</span>
+                        </div>
+                        <a href="{% url 'women-empowerment' %}" class="learn-more-btn">
+                            Learn More <span class="arrow">➔</span>
+                        </a>
+                    </div>
+                    <!--box end-->
+                     
+                    <div class="box stagger-item">
+                        <div class="cardImage"></div>
+                        <div class="programTitle">
+                            Interest free Loan
+                        </div>
+                        <div class="donationCount">
+                            Donation Goal : <span>500</span>
+                        </div>
+                        <a href="{% url 'loan-program' %}" class="learn-more-btn">
+                            Learn More <span class="arrow">➔</span>
+                        </a>
+                    </div>
+                    <!--box end-->
+                </div>
+                <!--boxContainer end here-->
+            </div>
+        </section>
+        <!--programsSection end here-->
+
+        <section class="education" id="educationSection">
+            <video autoplay muted loop preload="auto" class="videoPlayer" id="educationVideo">
+                <source src="{% static 'video/childrens.mp4' %}" type="video/mp4" />
+                your browser does not support HTML5 video
+            </video>
+
+            <div class="container video-overlay scroll-animate fade-in-up">
+                <div class="sectionTitle">
+                    Education
+                </div>
+                <div class="educationContainer">
+                    <h3 class="scroll-animate fade-in-left">
+                        Education is essential for <br />
+                        <strong> BETTER FUTURE </strong>
+                    </h3>
+                    <p class="scroll-animate fade-in-right">
+                        We provide quality education to underprivileged children in rural areas, offering school supplies, learning support, and awareness programs to ensure every child has the opportunity to learn, grow, and succeed.
+                    </p>
+                    <button class="scroll-animate bounce-in"> EXPLORE NOW </button>
+                </div>
+            </div>
+        </section>
+        <!--educationSection end here-->
+
+        <section class="gallery" id="gallerySection">
+            <div class="container">
+                <div class="sectionTitle scroll-animate fade-in-up">Gallery</div>
+                <div class="galleryContainer stagger-container">
+                    {% for image in gallery_images %}
+                    <div class="item gallery-item stagger-item">
+                        <span class="title">{{ image.title }}</span>
+                        <img src="{{ image.image.url }}" alt="{{ image.title }}">
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+        <!--gallerySection end here-->
+
+        <section class="join" id="joinSection">
+            <div class="container">
+                <div class="joinTitle scroll-animate fade-in-up"> 
+                    SPONSOR A CHILD & <span> SAVE LIVES </span> 
+                </div>
+                <p class="scroll-animate fade-in-up">
+                    Sponsor a child through Bandiramchar Development Foundation and help provide education, healthcare, and basic needs. Your support creates lasting change, offering hope and a brighter future for underprivileged children.
+                </p>
+                <div class="scroll-animate scale-in">
+                    <a href="{% url 'membership' %}">
+                        <button class="joinNow">BECOME A MEMBER</button>
+                    </a>
+                    <a href="{% url 'donate' %}">
+                        <button class="sponsor">SPONSOR A CHILD</button>
+                    </a>
+                </div>
+            </div>
+        </section>
+        <!--joinSection end here-->
+
+    {% include 'partials/footer.html' %} 
+    
+    <script src="{% static 'js/smooth-scroll.js' %}"></script>
+    <script src="{% static 'js/scroll-animations.js' %}"></script>
+  
+    </body>
+</html>

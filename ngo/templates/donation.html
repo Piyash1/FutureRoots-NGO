@@ -1,0 +1,96 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Donate Now</title>
+  <link rel="stylesheet" href="{% static 'css/donation.css' %}">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel="icon" href="{% static 'images/favicon.png' %}" type="image/png">
+</head>
+<body>
+{% include 'partials/header.html' %}
+
+<section class="page-header" style="background: url('/static/images/header-bg.jpg') center center / cover no-repeat;">
+  <h1>Donate Now</h1>
+  <nav class="breadcrumb">
+    <a href="{% url 'home' %}">Home</a> &gt;
+    <span>Donate</span>
+  </nav>
+</section>
+
+<section class="donation-section">
+  <div class="donation-container">
+    <div class="donation-form">
+      <h2>Help Our Children<br><span>Make Their Lives Better</span></h2>
+      <p>Your support changes lives by funding school materials and education for underprivileged children.</p>
+
+      <input type="text" id="amountInput" placeholder="Enter Amount (e.g. 3000)" class="amount-input" readonly>
+
+      <div class="amount-options">
+        <button data-amount="500">500 BDT</button>
+        <button data-amount="2500" class="selected">2500 BDT</button>
+        <button data-amount="5000">5000 BDT</button>
+        <button data-amount="custom">Custom</button>
+      </div>
+
+      <h3>Select Gift Items</h3>
+      <div class="gift-items">
+        <div class="gift-box" data-price="500">
+          <div class="icon">🎒</div>
+          <p>School Bag<br>(500 BDT)</p>
+          <input type="number" class="gift-qty" value="1" min="1">
+        </div>
+        <div class="gift-box" data-price="200">
+          <div class="icon">✏️</div>
+          <p>Pencil Box<br>(200 BDT)</p>
+          <input type="number" class="gift-qty" value="1" min="1">
+        </div>
+        <div class="gift-box" data-price="1000">
+          <div class="icon">👕</div>
+          <p>Uniform<br>(1000 BDT)</p>
+          <input type="number" class="gift-qty" value="1" min="1">
+        </div>
+      </div>
+
+      <button class="donate-btn" id="donateNowBtn">Donate Now</button>
+    </div>
+
+    <div class="donation-image-card">
+      <img src="{% static 'images/donation-side.jpg' %}" alt="Zakat Donation">
+      <div class="donation-text">
+        <p>সুবিধাবঞ্চিত শিশুদের জীবন বদলাতে যাকাত দিন</p>
+        <button class="zakat-btn">Donate Zakat</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ✅ Donation Popup Form -->
+<div class="popup-overlay" id="donationPopup">
+  <div class="popup-content">
+    <span class="popup-close" onclick="closePopup()">×</span>
+    <div class="popup-box">
+      <p>
+        <strong>Thank you for being a part of our mission!</strong><br>
+        You are about to donate <span id="popupAmount">2500</span> BDT.<br>
+        Please fill out the form below to complete your payment.
+      </p>
+      <form method="POST" action="{% url 'donation_submit' %}">
+        {% csrf_token %}
+        <input type="hidden" name="amount" id="formAmount">
+        <input type="text" name="name" placeholder="Your Full Name" required>
+        <input type="text" name="phone" placeholder="Your Phone Number" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <button type="submit">Proceed to Payment »</button>
+      </form>
+      <!--<img src="{% static 'images/sslcommerz.png' %}" alt="SSL Verified" class="verified-badge">-->
+    </div>
+  </div>
+</div>
+
+{% include 'partials/footer.html' %}
+<script src="{% static 'js/donation.js' %}"></script>
+<script src="{% static 'js/smooth-scroll.js' %}"></script>
+</body>
+</html>

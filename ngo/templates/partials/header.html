@@ -1,0 +1,22 @@
+{% load static %}
+
+<header>
+    <div class="container">
+        <div class="logo">
+            <a href="{% url 'home' %}">
+                <img src="{% static 'images/logo.png' %}" alt="NGO logo" />
+            </a>
+        </div>
+
+        <nav>
+            <ul class="main-nav">
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'home' %}#aboutSection">About Us</a></li>
+                <li><a href="{% url 'home' %}#programsSection">Programs</a></li>
+                <li><a href="{% url 'home' %}#educationSection">Education</a></li>
+                <li><a href="{% url 'home' %}#gallerySection">Gallery</a></li>
+                <li><a href="{% url 'home' %}#joinSection">Join Us</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>

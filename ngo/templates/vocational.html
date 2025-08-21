@@ -1,0 +1,88 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Vocational Training Program in Santhia</title>
+  <link rel="stylesheet" href="{% static 'css/vocational.css' %}">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel="icon" href="{% static 'images/favicon.png' %}" type="image/png">
+</head>
+<body>
+    {% include 'partials/header.html' %}
+    <section class="page-header" style="background: url('/static/images/header-bg.jpg') center center / cover no-repeat;">
+        <h1>NGO for Vocational Training in Santhia, Pabna</h1>
+        <nav class="breadcrumb">
+        <a href="{% url 'home' %}">Home</a> &gt;
+        <a href="{% url 'home' %}#programsSection">Programs</a> &gt;
+        <span>Vocational Training Program</span>
+        </nav>
+    </section>
+
+  <main class="content">
+    <section class="left-column">
+      <h2>Vocational Training NGO in Bandiramchar, Santhia, Pabna</h2>
+      <p>
+        Bandiramchar Development Foundation is actively engaged in promoting vocational training programs in village areas of Bangladesh to help individuals, especially youth and women, gain practical skills for sustainable livelihoods. Recognizing the limited employment opportunities in rural communities, the foundation offers hands-on training in various trades such as tailoring, handicrafts, computer literacy, electrical work, and small-scale agriculture. These programs are designed to meet local market demands and enable participants to start their own businesses or secure stable jobs. The training sessions are conducted by experienced instructors and often include life skills and basic financial literacy to ensure long-term success. Special attention is given to women and marginalized groups to help them achieve economic independence and social empowerment. By equipping villagers with employable skills, Bandiramchar Development Foundation is reducing poverty, curbing migration to urban areas, and strengthening rural economies. The foundation believes that empowering individuals through skill development not only transforms lives but also contributes to the overall progress of the community.
+      </p>
+      <img src="{% static 'images/vocational-training.jpg' %}" alt="Child Education" class="education-image">
+
+      <p>
+        Vocational training through Bandiramchar Development Foundation is bringing positive change to villages by creating opportunities for skill-based employment and entrepreneurship. In areas where traditional jobs are scarce, the foundation’s training programs in tailoring, handicrafts, agriculture, and computer skills are empowering villagers—especially women and youth—to become self-reliant. As trainees start small businesses or gain employment, household incomes improve, reducing poverty and dependency. This shift is not only strengthening individual livelihoods but also stimulating local economies. With better income, families can afford education and healthcare, contributing to overall community development. Through vocational training, the NGO is fostering confidence, dignity, and progress, turning rural villages into hubs of skill, productivity, and hope for a better future.
+      </p>
+
+      <div class="mission-objective">
+            <a href="{% url 'our-mission' %}" class="box-link">
+                <div class="box">
+                    <strong>📘 Our Mission</strong><br>
+                    The mission of Youth Helping Trust is overcoming poverty, and ensuring a life...
+                </div>
+            </a>
+
+            <a href="{% url 'our-objective' %}" class="box-link">
+                <div class="box">
+                    <strong>🎯 Our Objective</strong><br>
+                    Youth Helping Trust empowering and health community-based organization...
+                </div>
+            </a>
+      </div>
+
+   
+
+    </section>
+
+    <aside class="right-sidebar">
+      <div class="program-list">
+        <ul>
+            <li><a href="{% url 'education' %}">Child Education NGO in Santhia</a></li>
+            <li><a href="{% url 'health' %}">Health Care Program</a></li>
+            <li><a href="{% url 'women-empowerment' %}">Women Empowerment Program</a></li>
+            <li><a href="{% url 'vocational-training' %}" class="highlighted-program"">Vocational Training Program</a></li>
+            <li><a href="{% url 'loan-program' %}">Interest free Loan Program</a></li>
+        </ul>
+      </div>
+
+        <div class="contact-box">
+            <img src="{% static 'images/telephone.png' %}" alt="Call Icon" class="call-icon">
+            <p>Have any questions? Call us!</p>
+            <h4>+880 1798772429</h4>
+            <p class="info">info@bdf.org</p>
+        </div>
+
+      <div class="donate-box">
+        <h4>Contribute To Vocational Training</h4>
+        <p>Support vocational training to empower rural communities with skills, jobs, and hope. Your contribution helps transform lives through education, self-reliance, and sustainable livelihoods.
+        </p>
+        <a href="{% url 'donate' %}" class="donate-btn">
+            Donate Now
+            <img src="{% static 'images/heart.png' %}" alt="Donate Icon" class="donate-icon">
+        </a>
+      </div>
+    </aside>
+  </main>
+{% include 'partials/footer.html' %}
+
+<script src="{% static 'js/smooth-scroll.js' %}"></script>
+
+</body>
+</html>

@@ -1,0 +1,91 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Women Safety NGO</title>
+  <link rel="stylesheet" href="{% static 'css/women_empowerment.css' %}">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel="icon" href="{% static 'images/favicon.png' %}" type="image/png">
+</head>
+<body>
+    {% include 'partials/header.html' %}
+    <section class="page-header" style="background: url('/static/images/header-bg.jpg') center center / cover no-repeat;">
+        <h1>Women Empowerment NGO in Santhia, Pabna</h1>
+        <nav class="breadcrumb">
+        <a href="{% url 'home' %}">Home</a> &gt;
+        <a href="{% url 'home' %}#programsSection">Programs</a> &gt;
+        <span>Women Empowerment Program</span>
+        </nav>
+    </section>
+
+  <main class="content">
+    <section class="left-column">
+      <h2>Women Safety NGO in Bandiramchar, Santhia, Pabna</h2>
+      <blockquote class="quote">“Educate a girl, and she will rewrite the future of her community.”</blockquote>
+      <p>
+        Bandiramchar Development Foundation is deeply committed to empowering women in rural areas of Bangladesh through targeted programs that promote self-reliance, education, and economic independence. Understanding the challenges women face in these communities—such as poverty, lack of education, and limited job opportunities—the foundation offers skill development workshops, vocational training, and literacy programs to help women build confidence and secure livelihoods. Training in areas like sewing, handicrafts, small-scale farming, and entrepreneurship enables them to earn income and contribute to their families' well-being. The foundation also conducts awareness campaigns on women's rights, health, and gender equality to encourage a more supportive environment. Women are encouraged to form self-help groups where they can support one another, share knowledge, and access microloans to start small businesses. Bandiramchar Development Foundation believes that empowering women leads to stronger families and communities. Through continuous support, the organization is helping women in rural Bangladesh break the cycle of poverty and become active participants in their social and economic development.
+      </p>
+      <img src="{% static 'images/women-empowerment.jpg' %}" alt="Child Education" class="education-image">
+      <blockquote class="quote">“The time for equality in education is not tomorrow—it’s now.”</blockquote>
+
+      <ul class="point-list">
+        <li>Bandiramchar Development Foundation empowers underprivileged young women by sponsoring 3-month training programs in tailoring and beauty services, helping them gain skills for financial independence.</li>
+        <li>The Foundation aids marginalized tribal women farmers by providing support to purchase certified seeds and organic compost, enabling them to maintain sustainable vegetable gardens.</li>
+        <li>The initiative aims to enhance the social, economic, political, and legal standing of women, ensuring equal rights and building their confidence.</li>
+        <li>The Foundation promotes higher education for women, encouraging them to explore their talents, which benefits both the individual and society at large.</li>
+        <li>Women are increasingly contributing to national development, excelling in fields like medicine, engineering, and more, making the country proud with their achievements.</li>
+       </ul>
+
+
+      <div class="mission-objective">
+            <a href="{% url 'our-mission' %}" class="box-link">
+                <div class="box">
+                    <strong>📘 Our Mission</strong><br>
+                    The mission of Youth Helping Trust is overcoming poverty, and ensuring a life...
+                </div>
+            </a>
+
+            <a href="{% url 'our-objective' %}" class="box-link">
+                <div class="box">
+                    <strong>🎯 Our Objective</strong><br>
+                    Youth Helping Trust empowering and health community-based organization...
+                </div>
+            </a>
+      </div>
+    </section>
+
+    <aside class="right-sidebar">
+      <div class="program-list">
+        <ul>
+            <li><a href="{% url 'education' %}">Child Education NGO in Santhia</a></li>
+            <li><a href="{% url 'health' %}">Health Care Program</a></li>
+            <li><a href="{% url 'women-empowerment' %}" class="highlighted-program">Women Empowerment Program</a></li>
+            <li><a href="{% url 'vocational-training' %}">Vocational Training Program</a></li>
+            <li><a href="{% url 'loan-program' %}">Interest free Loan Program</a></li>
+        </ul>
+      </div>
+
+        <div class="contact-box">
+            <img src="{% static 'images/telephone.png' %}" alt="Call Icon" class="call-icon">
+            <p>Have any questions? Call us!</p>
+            <h4>+880 1798772429</h4>
+            <p class="info">info@bdf.org</p>
+        </div>
+
+      <div class="donate-box">
+        <h4>Contribute To Women’s Empowerment</h4>
+        <p>
+            Your donation can change a woman’s life. By supporting our empowerment programs, you help women gain skills, education, and opportunities to build a better future. Empowered women uplift families and drive lasting community progress. Join us in creating a world where every woman has the chance to thrive and succeed.
+        </p>
+        <a href="{% url 'donate' %}" class="donate-btn">
+            Donate Now
+            <img src="{% static 'images/heart.png' %}" alt="Donate Icon" class="donate-icon">
+        </a>
+      </div>
+    </aside>
+  </main>
+{% include 'partials/footer.html' %}
+<script src="{% static 'js/smooth-scroll.js' %}"></script>
+</body>
+</html>

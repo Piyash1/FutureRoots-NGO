@@ -1,0 +1,84 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Health Care NGO</title>
+  <link rel="stylesheet" href="{% static 'css/health.css' %}">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel="icon" href="{% static 'images/favicon.png' %}" type="image/png">
+</head>
+<body>
+    {% include 'partials/header.html' %}
+    <section class="page-header" style="background: url('/static/images/header-bg.jpg') center center / cover no-repeat;">
+        <h1>Health Care NGO in Santhia, Pabna</h1>
+        <nav class="breadcrumb">
+        <a href="{% url 'home' %}">Home</a> &gt;
+        <a href="{% url 'home' %}#programsSection">Programs</a> &gt;
+        <span>Health Care NGO</span>
+        </nav>
+    </section>
+
+  <main class="content">
+    <section class="left-column">
+      <h2>Best Health Care NGO in Bandiramchar, Santhia, Pabna</h2>
+      <blockquote class="quote">“A healthy body cannot exist without a healthy world.”</blockquote>
+      <p>
+        Bandiramchar Development Foundation is actively working to improve health and well-being in rural areas of Bangladesh through its dedicated health program. Recognizing the lack of access to proper healthcare in remote villages, the foundation organizes regular medical camps, health awareness sessions, and free check-up drives to reach underserved populations. With a focus on maternal and child health, the program provides essential services such as prenatal care, immunizations, nutrition guidance, and hygiene education. The foundation also distributes basic medicines and health kits to families who cannot afford them. Trained health volunteers and local healthcare workers are engaged to monitor the health status of the community and to offer support for common illnesses and preventive care. In addition, Bandiramchar Development Foundation partners with local clinics and healthcare providers to ensure that people in these areas receive timely treatment and referrals when needed. By promoting awareness and access, the foundation is helping to reduce health risks, prevent disease, and build healthier futures for rural communities in Bangladesh.
+      </p>
+      <img src="{% static 'images/health-photo.jpg' %}" alt="Child Education" class="education-image">
+      <blockquote class="quote">“Health is the foundation of everything — opportunity, education, and dignity.”</blockquote>
+
+      <p>
+        Bandiramchar Development Foundation’s healthcare initiative for the elderly focuses on organizing health camps across both rural and urban regions of India. In collaboration with its network of partners, the Trust has successfully conducted general and specialized medical camps specifically for senior citizens. However, the healthcare needs of the underprivileged often remain unmet, especially in urban slum areas. Poor living conditions, lack of awareness, limited education, and the reluctance to forgo a day's income to visit a distant medical facility contribute to this gap.</br>Working closely with doctors, nurses, and patients, the Trust relies on essential skills such as empathy, critical thinking, and problem-solving. Their primary mission is to support individuals in meeting the financial, emotional, and social challenges related to illness or injury, often extending therapeutic support to families during times of crisis.
+      </p>
+
+      <div class="mission-objective">
+            <a href="{% url 'our-mission' %}" class="box-link">
+                <div class="box">
+                    <strong>📘 Our Mission</strong><br>
+                    The mission of Youth Helping Trust is overcoming poverty, and ensuring a life...
+                </div>
+            </a>
+
+            <a href="{% url 'our-objective' %}" class="box-link">
+                <div class="box">
+                    <strong>🎯 Our Objective</strong><br>
+                    Youth Helping Trust empowering and health community-based organization...
+                </div>
+            </a>
+      </div>
+    </section>
+
+    <aside class="right-sidebar">
+      <div class="program-list">
+        <ul>
+            <li><a href="{% url 'education' %}">Child Education NGO in Santhia</a></li>
+            <li><a href="{% url 'health' %}" class="highlighted-program">Health Care Program</a></li>
+            <li><a href="{% url 'women-empowerment' %}">Women Empowerment Program</a></li>
+            <li><a href="{% url 'vocational-training' %}">Vocational Training Program</a></li>
+            <li><a href="{% url 'loan-program' %}">Interest free Loan Program</a></li>
+        </ul>
+      </div>
+
+        <div class="contact-box">
+            <img src="{% static 'images/telephone.png' %}" alt="Call Icon" class="call-icon">
+            <p>Have any questions? Call us!</p>
+            <h4>+880 1798772429</h4>
+            <p class="info">info@bdf.org</p>
+        </div>
+
+      <div class="donate-box">
+        <h4>Contribute To Health Program</h4>
+        <p>Our goal is to give everyone who has spent the majority of their lives without the fundamental rights of hearing and movement a fresh start. We assist people in becoming more self-assured, capable of leading almost normal lives, and capable of contributing to their society rather than being a burden on it.</p>
+        <a href="{% url 'donate' %}" class="donate-btn">
+            Donate Now
+            <img src="{% static 'images/heart.png' %}" alt="Donate Icon" class="donate-icon">
+        </a>
+      </div>
+    </aside>
+  </main>
+{% include 'partials/footer.html' %}
+<script src="{% static 'js/smooth-scroll.js' %}"></script>
+</body>
+</html>
