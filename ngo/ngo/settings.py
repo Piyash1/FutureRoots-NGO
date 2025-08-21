@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 import os
 from pathlib import Path
+from urllib.parse import urlparse
 
 from environ import Env
 env = Env()
@@ -231,6 +232,12 @@ CSRF_TRUSTED_ORIGINS = env.list(
     'CSRF_TRUSTED_ORIGINS', default=['https://futureroots.onrender.com']
 )
 render_external_url = env('RENDER_EXTERNAL_URL', default=None)
-if render_external_url and render_external_url not in CSRF_TRUSTED_ORIGINS:
-    CSRF_TRUSTED_ORIGINS.append(render_external_url)
+if render_external_url:
+    parsed = urlparse(render_external_url)
+    host_only = parsed.hostname
+    origin = f"{parsed.scheme}://{parsed.netloc}"
+    if host_only and host_only not in ALLOWED_HOSTS:
+        ALLOWED_HOSTS.append(host_only)
+    if origin not in CSRF_TRUSTED_ORIGINS:
+        CSRF_TRUSTED_ORIGINS.append(origin)
 
