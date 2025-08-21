@@ -58,7 +58,7 @@ if not DEFAULT_FROM_EMAIL and EMAIL_HOST_USER:
     DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
 
-ALLOWED_HOSTS = ['*']
+
 
 
 # Application definition
@@ -185,17 +185,30 @@ MEDIA_URL = '/media/'
 if ENVIRONMENT == 'development':
     MEDIA_ROOT = BASE_DIR / 'media'
 else:
-    STORAGES = {
-        "default": {
-            "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
-        },
-        "staticfiles": {
-            "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    cloudinary_url_value = env('CLOUDINARY_URL', default=None)
+    if cloudinary_url_value:
+        STORAGES = {
+            "default": {
+                "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
             },
-    }
-    CLOUDINARY_STORAGE = {
-        'CLOUDINARY_URL' : env('CLOUDINARY_URL')
-    }
+            "staticfiles": {
+                "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+            },
+        }
+        CLOUDINARY_STORAGE = {
+            'CLOUDINARY_URL': cloudinary_url_value,
+        }
+    else:
+        # Fallback to local media storage if Cloudinary not configured
+        STORAGES = {
+            "default": {
+                "BACKEND": "django.core.files.storage.FileSystemStorage",
+            },
+            "staticfiles": {
+                "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+            },
+        }
+        MEDIA_ROOT = BASE_DIR / 'media'
 
     # Security settings for proxy/SSL on Render
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
