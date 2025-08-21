@@ -226,8 +226,10 @@ elif ENVIRONMENT == 'production':
     pass
 
 # Hosts and CSRF
-ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=['*'])
-CSRF_TRUSTED_ORIGINS = env.list('CSRF_TRUSTED_ORIGINS', default=[])
+ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=['futureroots.onrender.com'])
+CSRF_TRUSTED_ORIGINS = env.list(
+    'CSRF_TRUSTED_ORIGINS', default=['https://futureroots.onrender.com']
+)
 render_external_url = env('RENDER_EXTERNAL_URL', default=None)
 if render_external_url and render_external_url not in CSRF_TRUSTED_ORIGINS:
     CSRF_TRUSTED_ORIGINS.append(render_external_url)
