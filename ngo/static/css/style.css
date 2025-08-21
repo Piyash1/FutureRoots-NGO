@@ -744,7 +744,7 @@ footer .newsLetterContainer input{
     top: 5px;
     right: 80px;
     z-index: 999;
-    background: url('../images/banner.jpg') no-repeat center center/cover;
+    background: transparent;
     color: white;
     padding: 8px 15px;
     border-radius: 30px;
