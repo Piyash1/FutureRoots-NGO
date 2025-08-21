@@ -1,1 +1,1 @@
-web: gunicorn ngo.wsgi:application --log-file -
+web: gunicorn --chdir ngo ngo.wsgi:application --log-file -

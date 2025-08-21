@@ -5,7 +5,7 @@ services:
     plan: free
     region: oregon
     buildCommand: "pip install -r requirements.txt && python ngo/manage.py collectstatic --noinput && python ngo/manage.py migrate --noinput"
-    startCommand: "gunicorn ngo.wsgi:application --log-file -"
+    startCommand: "gunicorn --chdir ngo ngo.wsgi:application --log-file -"
     envVars:
       - key: ENVIRONMENT
         value: production
