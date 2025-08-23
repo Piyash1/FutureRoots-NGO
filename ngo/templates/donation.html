@@ -1,10 +1,12 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Donate Now</title>
-  <!-- Placeholder for CSS files -->
+  <!-- Site header styles for navbar -->
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
   <style>
     /* Basic styling for demonstration */
     body {
@@ -14,7 +16,7 @@
     }
     
     .page-header {
-      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23ddd"/></svg>') center center / cover no-repeat;
+      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('{% static "images/header-bg.JPG" %}') center center / cover no-repeat;
       color: white;
       text-align: center;
       padding: 80px 20px;
@@ -271,10 +273,7 @@
   </style>
 </head>
 <body>
-  <!-- Header placeholder -->
-  <div style="background: #2c3e50; color: white; padding: 15px 20px; text-align: center;">
-    <h3 style="margin: 0;">Header Placeholder</h3>
-  </div>
+  {% include 'partials/header.html' %}
 
   <section class="page-header">
     <h1>Donate Now</h1>
@@ -322,7 +321,7 @@
       </div>
 
       <div class="donation-image-card">
-        <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='200' viewBox='0 0 300 200'><rect width='300' height='200' fill='%23ddd'/><text x='150' y='100' text-anchor='middle' fill='%23999' font-size='16'>Donation Image</text></svg>" alt="Zakat Donation">
+        <img src="{% static 'images/donation-side.jpg' %}" alt="Zakat Donation">
         <div class="donation-text">
           <p>সুবিধাবঞ্চিত শিশুদের জীবন বদলাতে যাকাত দিন</p>
           <button type="button" class="zakat-btn">Donate Zakat</button>
