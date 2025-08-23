@@ -1,96 +1,499 @@
-{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Donate Now</title>
-  <link rel="stylesheet" href="{% static 'css/donation.css' %}">
-  <link rel="stylesheet" href="{% static 'css/style.css' %}">
-  <link rel="icon" href="{% static 'images/favicon.png' %}" type="image/png">
+  <!-- Placeholder for CSS files -->
+  <style>
+    /* Basic styling for demonstration */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .page-header {
+      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23ddd"/></svg>') center center / cover no-repeat;
+      color: white;
+      text-align: center;
+      padding: 80px 20px;
+    }
+    
+    .page-header h1 {
+      margin: 0 0 10px 0;
+      font-size: 2.5rem;
+    }
+    
+    .breadcrumb {
+      font-size: 1rem;
+    }
+    
+    .breadcrumb a {
+      color: white;
+      text-decoration: none;
+    }
+    
+    .donation-section {
+      padding: 60px 20px;
+      background: #f9f9f9;
+    }
+    
+    .donation-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      gap: 40px;
+      align-items: flex-start;
+    }
+    
+    .donation-form {
+      flex: 1;
+      background: white;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    }
+    
+    .donation-form h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: #2c3e50;
+    }
+    
+    .donation-form h2 span {
+      color: #e74c3c;
+    }
+    
+    .donation-form p {
+      margin-bottom: 30px;
+      color: #666;
+      line-height: 1.6;
+    }
+    
+    .amount-input {
+      width: 100%;
+      padding: 15px;
+      border: 2px solid #ddd;
+      border-radius: 5px;
+      font-size: 1.1rem;
+      margin-bottom: 20px;
+      background: #f8f9fa;
+    }
+    
+    .amount-options {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+    
+    .amount-options button {
+      padding: 12px 20px;
+      border: 2px solid #ddd;
+      background: white;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    
+    .amount-options button.selected {
+      background: #e74c3c;
+      color: white;
+      border-color: #e74c3c;
+    }
+    
+    .gift-items {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+    
+    .gift-box {
+      flex: 1;
+      min-width: 150px;
+      border: 2px solid #ddd;
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+      background: white;
+    }
+    
+    .gift-box .icon {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+    
+    .gift-box p {
+      margin-bottom: 15px;
+      font-weight: bold;
+    }
+    
+    .gift-qty {
+      width: 60px;
+      padding: 8px;
+      border: 1px solid #ddd;
+      border-radius: 3px;
+      text-align: center;
+    }
+    
+    .donate-btn {
+      width: 100%;
+      padding: 15px;
+      background: #e74c3c;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    
+    .donate-btn:hover {
+      background: #c0392b;
+    }
+    
+    .donation-image-card {
+      flex: 0 0 300px;
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+      height: fit-content;
+    }
+    
+    .donation-image-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+    
+    .donation-text {
+      padding: 20px;
+      text-align: center;
+    }
+    
+    .zakat-btn {
+      background: #27ae60;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    
+    .popup-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+    
+    .popup-overlay.active {
+      display: flex;
+    }
+    
+    .popup-content {
+      background: white;
+      border-radius: 10px;
+      position: relative;
+      max-width: 500px;
+      width: 90%;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+    
+    .popup-close {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      font-size: 24px;
+      cursor: pointer;
+      color: #999;
+    }
+    
+    .popup-box {
+      padding: 40px 30px 30px;
+    }
+    
+    .popup-box p {
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    
+    .popup-box form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    
+    .popup-box input {
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+    
+    .popup-box button {
+      padding: 15px;
+      background: #e74c3c;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 1.1rem;
+      cursor: pointer;
+    }
+    
+    @media (max-width: 768px) {
+      .donation-container {
+        flex-direction: column;
+      }
+      
+      .donation-image-card {
+        flex: none;
+      }
+      
+      .amount-options {
+        justify-content: center;
+      }
+      
+      .gift-items {
+        justify-content: center;
+      }
+    }
+  </style>
 </head>
 <body>
-{% include 'partials/header.html' %}
+  <!-- Header placeholder -->
+  <div style="background: #2c3e50; color: white; padding: 15px 20px; text-align: center;">
+    <h3 style="margin: 0;">Header Placeholder</h3>
+  </div>
 
-<section class="page-header" style="background: url('{% static 'images/header-bg.JPG' %}') center center / cover no-repeat;">
-  <h1>Donate Now</h1>
-  <nav class="breadcrumb">
-    <a href="{% url 'home' %}">Home</a> &gt;
-    <span>Donate</span>
-  </nav>
-</section>
+  <section class="page-header">
+    <h1>Donate Now</h1>
+    <nav class="breadcrumb">
+      <a href="#home">Home</a> &gt;
+      <span>Donate</span>
+    </nav>
+  </section>
 
-<section class="donation-section">
-  <div class="donation-container">
-    <div class="donation-form">
-      <h2>Help Our Children<br><span>Make Their Lives Better</span></h2>
-      <p>Your support changes lives by funding school materials and education for underprivileged children.</p>
+  <section class="donation-section">
+    <div class="donation-container">
+      <div class="donation-form">
+        <h2>Help Our Children<br><span>Make Their Lives Better</span></h2>
+        <p>Your support changes lives by funding school materials and education for underprivileged children.</p>
 
-      <input type="text" id="amountInput" placeholder="Enter Amount (e.g. 3000)" class="amount-input" readonly>
+        <input type="text" id="amountInput" placeholder="Enter Amount (e.g. 3000)" class="amount-input" readonly>
 
-      <div class="amount-options">
-        <button data-amount="500">500 BDT</button>
-        <button data-amount="2500" class="selected">2500 BDT</button>
-        <button data-amount="5000">5000 BDT</button>
-        <button data-amount="custom">Custom</button>
+        <div class="amount-options">
+          <button type="button" data-amount="500">500 BDT</button>
+          <button type="button" data-amount="2500" class="selected">2500 BDT</button>
+          <button type="button" data-amount="5000">5000 BDT</button>
+          <button type="button" data-amount="custom">Custom</button>
+        </div>
+
+        <h3>Select Gift Items</h3>
+        <div class="gift-items">
+          <div class="gift-box" data-price="500">
+            <div class="icon">🎒</div>
+            <p>School Bag<br>(500 BDT)</p>
+            <input type="number" class="gift-qty" value="1" min="1" max="99">
+          </div>
+          <div class="gift-box" data-price="200">
+            <div class="icon">✏️</div>
+            <p>Pencil Box<br>(200 BDT)</p>
+            <input type="number" class="gift-qty" value="1" min="1" max="99">
+          </div>
+          <div class="gift-box" data-price="1000">
+            <div class="icon">👕</div>
+            <p>Uniform<br>(1000 BDT)</p>
+            <input type="number" class="gift-qty" value="1" min="1" max="99">
+          </div>
+        </div>
+
+        <button type="button" class="donate-btn" id="donateNowBtn">Donate Now</button>
       </div>
 
-      <h3>Select Gift Items</h3>
-      <div class="gift-items">
-        <div class="gift-box" data-price="500">
-          <div class="icon">🎒</div>
-          <p>School Bag<br>(500 BDT)</p>
-          <input type="number" class="gift-qty" value="1" min="1">
-        </div>
-        <div class="gift-box" data-price="200">
-          <div class="icon">✏️</div>
-          <p>Pencil Box<br>(200 BDT)</p>
-          <input type="number" class="gift-qty" value="1" min="1">
-        </div>
-        <div class="gift-box" data-price="1000">
-          <div class="icon">👕</div>
-          <p>Uniform<br>(1000 BDT)</p>
-          <input type="number" class="gift-qty" value="1" min="1">
+      <div class="donation-image-card">
+        <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='200' viewBox='0 0 300 200'><rect width='300' height='200' fill='%23ddd'/><text x='150' y='100' text-anchor='middle' fill='%23999' font-size='16'>Donation Image</text></svg>" alt="Zakat Donation">
+        <div class="donation-text">
+          <p>সুবিধাবঞ্চিত শিশুদের জীবন বদলাতে যাকাত দিন</p>
+          <button type="button" class="zakat-btn">Donate Zakat</button>
         </div>
       </div>
-
-      <button class="donate-btn" id="donateNowBtn">Donate Now</button>
     </div>
+  </section>
 
-    <div class="donation-image-card">
-      <img src="{% static 'images/donation-side.jpg' %}" alt="Zakat Donation">
-      <div class="donation-text">
-        <p>সুবিধাবঞ্চিত শিশুদের জীবন বদলাতে যাকাত দিন</p>
-        <button class="zakat-btn">Donate Zakat</button>
+  <!-- Donation Popup Form -->
+  <div class="popup-overlay" id="donationPopup">
+    <div class="popup-content">
+      <span class="popup-close" onclick="closePopup()">&times;</span>
+      <div class="popup-box">
+        <p>
+          <strong>Thank you for being a part of our mission!</strong><br>
+          You are about to donate <span id="popupAmount">2500</span> BDT.<br>
+          Please fill out the form below to complete your payment.
+        </p>
+        <form method="POST" action="#donation_submit" id="donationForm">
+          <!-- CSRF token placeholder -->
+          <input type="hidden" name="csrfmiddlewaretoken" value="dummy-csrf-token">
+          <input type="hidden" name="amount" id="formAmount" value="2500">
+          <input type="text" name="name" placeholder="Your Full Name" required>
+          <input type="tel" name="phone" placeholder="Your Phone Number" required>
+          <input type="email" name="email" placeholder="Your Email" required>
+          <button type="submit">Proceed to Payment &raquo;</button>
+        </form>
       </div>
     </div>
   </div>
-</section>
 
-<!-- ✅ Donation Popup Form -->
-<div class="popup-overlay" id="donationPopup">
-  <div class="popup-content">
-    <span class="popup-close" onclick="closePopup()">×</span>
-    <div class="popup-box">
-      <p>
-        <strong>Thank you for being a part of our mission!</strong><br>
-        You are about to donate <span id="popupAmount">2500</span> BDT.<br>
-        Please fill out the form below to complete your payment.
-      </p>
-      <form method="POST" action="{% url 'donation_submit' %}">
-        {% csrf_token %}
-        <input type="hidden" name="amount" id="formAmount">
-        <input type="text" name="name" placeholder="Your Full Name" required>
-        <input type="text" name="phone" placeholder="Your Phone Number" required>
-        <input type="email" name="email" placeholder="Your Email" required>
-        <button type="submit">Proceed to Payment »</button>
-      </form>
-      <!--<img src="{% static 'images/sslcommerz.png' %}" alt="SSL Verified" class="verified-badge">-->
-    </div>
+  <!-- Footer placeholder -->
+  <div style="background: #2c3e50; color: white; padding: 30px 20px; text-align: center;">
+    <h4 style="margin: 0;">Footer Placeholder</h4>
   </div>
-</div>
 
-{% include 'partials/footer.html' %}
-<script src="{% static 'js/donation.js' %}"></script>
-<script src="{% static 'js/smooth-scroll.js' %}"></script>
+  <script>
+    // Donation functionality
+    let currentAmount = 2500;
+    
+    // Amount selection buttons
+    document.querySelectorAll('.amount-options button').forEach(button => {
+      button.addEventListener('click', function() {
+        document.querySelectorAll('.amount-options button').forEach(btn => btn.classList.remove('selected'));
+        this.classList.add('selected');
+        
+        const amount = this.dataset.amount;
+        if (amount === 'custom') {
+          document.getElementById('amountInput').readOnly = false;
+          document.getElementById('amountInput').placeholder = 'Enter custom amount';
+          document.getElementById('amountInput').focus();
+        } else {
+          document.getElementById('amountInput').readOnly = true;
+          document.getElementById('amountInput').value = amount + ' BDT';
+          currentAmount = parseInt(amount);
+          updateFormAmount();
+        }
+      });
+    });
+    
+    // Custom amount input
+    document.getElementById('amountInput').addEventListener('input', function() {
+      const value = this.value.replace(/[^0-9]/g, '');
+      if (value) {
+        currentAmount = parseInt(value);
+        this.value = value + ' BDT';
+        updateFormAmount();
+      }
+    });
+    
+    // Gift quantity changes
+    document.querySelectorAll('.gift-qty').forEach(input => {
+      input.addEventListener('change', function() {
+        calculateTotal();
+      });
+    });
+    
+    // Calculate total based on gifts
+    function calculateTotal() {
+      let total = 0;
+      document.querySelectorAll('.gift-box').forEach(box => {
+        const price = parseInt(box.dataset.price);
+        const qty = parseInt(box.querySelector('.gift-qty').value) || 0;
+        total += price * qty;
+      });
+      
+      currentAmount = total;
+      document.getElementById('amountInput').value = total + ' BDT';
+      updateFormAmount();
+    }
+    
+    function updateFormAmount() {
+      document.getElementById('formAmount').value = currentAmount;
+      document.getElementById('popupAmount').textContent = currentAmount;
+    }
+    
+    // Initialize with default selection
+    document.getElementById('amountInput').value = '2500 BDT';
+    calculateTotal();
+    
+    // Donate button click
+    document.getElementById('donateNowBtn').addEventListener('click', function() {
+      document.getElementById('donationPopup').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    });
+    
+    // Close popup function
+    function closePopup() {
+      document.getElementById('donationPopup').classList.remove('active');
+      document.body.style.overflow = 'auto';
+    }
+    
+    // Close popup when clicking outside
+    document.getElementById('donationPopup').addEventListener('click', function(e) {
+      if (e.target === this) {
+        closePopup();
+      }
+    });
+    
+    // Handle form submission
+    document.getElementById('donationForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Validate form data
+      const name = this.name.value.trim();
+      const phone = this.phone.value.trim();
+      const email = this.email.value.trim();
+      const amount = this.amount.value;
+      
+      if (!name || !phone || !email || !amount) {
+        alert('Please fill in all required fields.');
+        return;
+      }
+      
+      // Email validation
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        alert('Please enter a valid email address.');
+        return;
+      }
+      
+      // Phone validation (basic)
+      const phoneRegex = /^[\d\s\-\+\(\)]+$/;
+      if (!phoneRegex.test(phone)) {
+        alert('Please enter a valid phone number.');
+        return;
+      }
+      
+      // Amount validation
+      if (parseInt(amount) < 100) {
+        alert('Minimum donation amount is 100 BDT.');
+        return;
+      }
+      
+      // Simulate form submission
+      alert(`Form submitted successfully!\nName: ${name}\nPhone: ${phone}\nEmail: ${email}\nAmount: ${amount} BDT`);
+      closePopup();
+    });
+    
+    // Smooth scroll functionality (basic)
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+  </script>
 </body>
 </html>
